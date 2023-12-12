@@ -45,25 +45,6 @@ ANSIBLE_FORCE_COLOR=true ansible-playbook \
   -i ${PROJECT_DIR}/inventories/localhost_inventory.yml \
   $PROJECT_DIR/playbooks/prepare_host.yml $@
 
-# Restart libvirtd service to get the new group membership loaded
-if ! id "${USER}" | grep -q libvirt; then
-  if [[ "${OS}" = "ubuntu" ]]; then
-    # Workaround - disable apparmor for libvirt as it doesn't seem to work with user-created volume pools
-    selinux="#security_driver = \"selinux\""
-    apparmor="security_driver = \"apparmor\""
-    none="security_driver = \"none\""
-    sudo sed -i "s/$selinux/$none/g" /etc/libvirt/qemu.conf
-    sudo sed -i "s/$apparmor/$none/g" /etc/libvirt/qemu.conf
-  fi
-
-  sudo adduser "${USER}" libvirt
-  sudo adduser "${USER}" kvm
-  sudo systemctl restart libvirtd
-  sudo setfacl -m user:$USER:rw /var/run/libvirt/libvirt-sock
-  echo "Note: to view libvirt resources as non-root log out and log in again"
-  echo "Alternatively export LIBVIRT_DEFAULT_URI=\"qemu:///system\""
-fi
-
 # Ensure we have an SSH key, used for access to VMs
 if [ ! -f ~/.ssh/id_ed25519 ]; then
   ssh-keygen -t ed25519 -C "m3-demo" -f ~/.ssh/id_ed25519 -N ""
