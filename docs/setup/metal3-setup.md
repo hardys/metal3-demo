@@ -11,6 +11,14 @@ Currently requires an Ubuntu (22.04 LTS) host to enable testing on Equinix.
 
 1. Create a non-root user with sudo access
 
+If one does not already exist e.g:
+
+```
+sudo useradd auser -m -s /bin/bash
+sudo echo "auser ALL=NOPASSWD: ALL" > /etc/sudoers.d/auser
+sudo su - auser
+```
+
 2. Clone this metal3-demo repo
 
 ```shell
