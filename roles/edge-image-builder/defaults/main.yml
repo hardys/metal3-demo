@@ -23,15 +23,15 @@ libvirt_network_dhcp: true
 libvirt_network_ipv6: false
 libvirt_network_ipv4: true
 
-cluster_rke2_version: "v1.32.3+rke2r1"
+cluster_rke2_version: "v1.32.4+rke2r1"
 cluster_cni: calico
 
 rancher_helm_repo: https://releases.rancher.com/server-charts/latest
 suse_edge_helm_repo: https://suse-edge.github.io/charts
-rancher_version: 2.11.1
-rancher_turtles_version: "0.8.0+up0.19.0"
+rancher_version: 2.11.2
+rancher_turtles_version: "0.9.0+up0.20.0"
 cert_manager_version: 1.15.3
-metal3_version: 0.11.3
+metal3_version: 0.11.6
 
 rancher_bootstrap_password: rancher
 
