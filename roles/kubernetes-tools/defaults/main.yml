@@ -9,7 +9,7 @@ kustomize_download_archive: https://github.com/kubernetes-sigs/kustomize/release
 kubetail_download_url: https://raw.githubusercontent.com/johanhaleby/kubetail/master/kubetail
 
 kubectl_version: v1.34.2
-kubectl_download_url: https://cdn.dl.k8s.io/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
+kubectl_download_url: https://dl.k8s.io/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
 
 # CAPI release version
 #
